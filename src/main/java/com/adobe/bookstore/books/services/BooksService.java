@@ -20,7 +20,7 @@ public class BooksService {
         this.booksRepository = booksRepository;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updateBooksInventory(Map<String, Integer> booksAndQuantities) {
         List<Book> bookList = new ArrayList<>();
         booksRepository.findAllById(booksAndQuantities.keySet()).forEach(bookList::add);
@@ -39,8 +39,8 @@ public class BooksService {
                 throw new OutOfStockException(msg);
             }
             book.setQuantity(newStock);
-            booksRepository.save(book);
         }
+        booksRepository.saveAll(bookList);
     }
 
     @Transactional(readOnly = true)
