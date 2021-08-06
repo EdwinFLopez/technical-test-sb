@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/api/v1/books-inventory")
+@RequestMapping("/books-inventory")
 public class BooksInventoryController {
 
     private final BooksRepository bookRepository;

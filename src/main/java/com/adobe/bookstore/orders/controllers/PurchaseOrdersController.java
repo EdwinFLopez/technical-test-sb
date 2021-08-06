@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/api/v1/purchase-orders")
+@RequestMapping("/purchase-orders")
 @Slf4j
 public class PurchaseOrdersController {
 
