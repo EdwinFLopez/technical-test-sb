@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 public class PurchaseOrderDetailId implements Serializable {
 
     @Column(name = "ORDER_ID", nullable = false, length = 36)
-    @NotBlank(message = "Order Id can't be blank")
+    @NotBlank(message = PurchaseOrderValidationMessages.PODETAIL_ID_ORDER_ID_MANDATORY)
     private String orderId;
 
     @Column(name = "BOOK_ID", nullable = false, length = 36)
-    @NotBlank(message = "Book Id can't be blank")
+    @NotBlank(message = PurchaseOrderValidationMessages.PODETAIL_ID_BOOK_ID_MANDATORY)
     private String bookId;
 }

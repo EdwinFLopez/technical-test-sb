@@ -29,18 +29,18 @@ public class PurchaseOrder implements Serializable {
 
     @Id
     @Column(name = "ORDER_ID", length = 36, nullable = false)
-    @NotBlank(message = "Purchase Order Id can't be blank")
-    @Size(min = 2, max = 36, message = "Purchase Order Id must be between 2 and 36 characters long")
+    @NotBlank(message = PurchaseOrderValidationMessages.PURCHASE_ORDER_ID_MANDATORY)
+    @Size(min = 2, max = 36, message = PurchaseOrderValidationMessages.PURCHASE_ORDER_ID_WRONG_SIZE)
     private String purchaseOrderId;
 
     @Column(name = "CUSTOMER_NAME", nullable = false)
-    @NotBlank(message = "Customer Name can't be blank")
-    @Size(min = 2, max = 255, message = "Customer Name must be between 2 and 255 characters long")
+    @NotBlank(message = PurchaseOrderValidationMessages.CUSTOMER_NAME_MANDATORY)
+    @Size(min = 2, max = 255, message = PurchaseOrderValidationMessages.CUSTOMER_NAME_WRONG_SIZE)
     private String customerName;
 
     @Column(name = "SHIPPING_ADDRESS", nullable = false)
-    @NotBlank(message = "Shipping Address can't be blank")
-    @Size(min = 2, max = 255, message = "Shipping Address must be between 2 and 255 characters long")
+    @NotBlank(message = PurchaseOrderValidationMessages.SHIPPING_ADDRESS_MANDATORY)
+    @Size(min = 2, max = 255, message = PurchaseOrderValidationMessages.SHIPPING_ADDRESS_WRONG_SIZE)
     private String shippingAddress;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

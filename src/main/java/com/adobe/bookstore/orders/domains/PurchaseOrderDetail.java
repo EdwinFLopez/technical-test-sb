@@ -22,6 +22,6 @@ public class PurchaseOrderDetail implements Serializable {
     private PurchaseOrderDetailId detailId;
 
     @Column(name = "QUANTITY", nullable = false)
-    @Min(value = 0, message = "Quantity should be at least 0")
+    @Min(value = 0, message = PurchaseOrderValidationMessages.PODETAIL_QUANTITY_NEGATIVE)
     private int quantity;
 }
