@@ -2,10 +2,10 @@
 
 SpringBoot Learning Exercise.
 
-* Repository url: https://github.com/edwinflopez/technical-test-sb
-* Download with: git clone https://github.com/edwinflopez/technical-test-sb
-* Run the solution with maven: mvn clean spring-boot:run
-* The application context is: /bookstore/api/v1
+* Repository url: `https://github.com/edwinflopez/technical-test-sb`
+* Download with: `git clone https://github.com/edwinflopez/technical-test-sb`
+* Run the solution with maven: `mvn clean spring-boot:run`
+* The application context is: `/bookstore/api/v1`
 * The required endpoints are:
   * Get all purchase orders as csv: `GET http://localhost:8080/bookstore/api/v1/purchase-orders?format=csv`
   * Get all purchase orders as json: `GET http://localhost:8080/bookstore/api/v1/purchase-orders?format=json`
