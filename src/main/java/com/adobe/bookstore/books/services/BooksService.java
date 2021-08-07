@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
@@ -20,7 +19,7 @@ public class BooksService {
         this.booksRepository = booksRepository;
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     public void updateBooksInventory(Map<String, Integer> booksAndQuantities) {
         List<Book> bookList = new ArrayList<>();
         booksRepository.findAllById(booksAndQuantities.keySet()).forEach(bookList::add);
@@ -38,9 +37,8 @@ public class BooksService {
                     book.getBookId(), availableStock, requestedUnits);
                 throw new OutOfStockException(msg);
             }
-            book.setQuantity(newStock);
+            booksRepository.updateBookAvailableQuantity(book.getBookId(), newStock);
         }
-        booksRepository.saveAll(bookList);
     }
 
     @Transactional(readOnly = true)

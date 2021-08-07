@@ -43,11 +43,11 @@ public class PurchaseOrdersController {
         }
         var listOption = PurchaseOrderListOptions.valueOf(StringUtils.upperCase(format));
         return ResponseEntity.ok()
-            .header("Content-Type", listOption.getContentType())
-            .body(listOption == PurchaseOrderListOptions.CSV
-                ? purchaseOrdersService.getPurchaseOrderListAsCSV()
-                : purchaseOrdersService.getPurchaseOrderListAsJSON()
-            );
+                .header("Content-Type", listOption.getContentType())
+                .body(listOption == PurchaseOrderListOptions.CSV
+                    ? purchaseOrdersService.getPurchaseOrderListAsCSV()
+                    : purchaseOrdersService.getPurchaseOrderListAsJSON()
+                );
     }
 
     @GetMapping("/{uuid}")
