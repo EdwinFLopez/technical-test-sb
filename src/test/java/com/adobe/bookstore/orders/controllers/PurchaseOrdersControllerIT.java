@@ -31,6 +31,7 @@ public class PurchaseOrdersControllerIT {
 
     static final String PURCHASE_ORDER_HP_JSON = "/payloads/purchase-order-hp.json";
     static final String PURCHASE_ORDER_HP_WITH_ID_JSON = "/payloads/purchase-order-hp-with-id.json";
+    static final String PURCHASE_ORDER_HP_WITH_DUPLICATED_ID_JSON = "/payloads/purchase-order-with-duplicated-id.json";
     static final String PURCHASE_ORDER_NO_CUSTOMER_JSON = "/payloads/purchase-order-no-customer.json";
     static final String PURCHASE_ORDER_NO_DETAILS_JSON = "/payloads/purchase-order-no-details.json";
     static final String PURCHASE_ORDER_NO_ORDER_INFO_JSON = "/payloads/purchase-order-no-order-info.json";
@@ -103,11 +104,19 @@ public class PurchaseOrdersControllerIT {
     }
 
     @Test
-    void shouldCreatePurchaseOrderWhenGivenValidPayloadWithId() throws Exception {
+    void shouldCreatePurchaseOrderWhenGivenValidPayloadWithNewId() throws Exception {
         var payload = getPurchaseOrderPayload(PURCHASE_ORDER_HP_WITH_ID_JSON);
         var entity = getHttpEntityForPurchaseOrder(payload);
         var response = tpl.postForEntity("/purchase-orders/add", entity, String.class);
         assertPurchaseOrderCreated(response);
+    }
+
+    @Test
+    void shouldNotCreatePurchaseOrderWhenGivenValidPayloadWithDuplicatedId() throws Exception {
+        var payload = getPurchaseOrderPayload(PURCHASE_ORDER_HP_WITH_DUPLICATED_ID_JSON);
+        var entity = getHttpEntityForPurchaseOrder(payload);
+        var response = tpl.postForEntity("/purchase-orders/add", entity, String.class);
+        assertPurchaseOrderWithInvalidRequest(response);
     }
 
     @Test
