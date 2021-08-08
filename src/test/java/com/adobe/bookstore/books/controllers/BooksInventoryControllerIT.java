@@ -2,7 +2,6 @@ package com.adobe.bookstore.books.controllers;
 
 import com.adobe.bookstore.books.domains.Book;
 import java.util.List;
-import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +22,7 @@ public class BooksInventoryControllerIT {
     @Test
     public void shouldHaveBooksWhenListed() {
         ResponseEntity<List> booksRs = tpl.getForEntity("/books-inventory", List.class);
-        assertEquals(HttpServletResponse.SC_OK, booksRs.getStatusCode(), "Invalid response code");
+        assertEquals(HttpStatus.OK, booksRs.getStatusCode(), "Invalid response code");
         assertNotNull(booksRs.getBody(), "No body response found");
         assertTrue(booksRs.getBody().size() > 0, "No books found. Check the flyway initialization");
     }
