@@ -35,6 +35,7 @@ public class BooksService {
             if (newStock < 0) {
                 var msg = String.format("Book %s has %d unit(s) in stock to fullfil %d",
                     book.getBookId(), availableStock, requestedUnits);
+                log.error(msg);
                 throw new OutOfStockException(msg);
             }
             booksRepository.updateBookAvailableQuantity(book.getBookId(), newStock);
@@ -43,6 +44,9 @@ public class BooksService {
 
     @Transactional(readOnly = true)
     public void checkForEnoughStock(Map<String, Integer> selectedBooks) {
+        if(selectedBooks == null || selectedBooks.isEmpty()) {
+            throw new IllegalArgumentException("At least one book is required to check for availability");
+        }
         List<Book> booksStock = new ArrayList<>();
         booksRepository.findAllById(selectedBooks.keySet()).forEach(booksStock::add);
         if (booksStock.size() < selectedBooks.size()) {
@@ -56,6 +60,7 @@ public class BooksService {
         if (outOfStockBook.isPresent()) {
             var oosBook = outOfStockBook.get();
             var msg = String.format("Not enough stock for book %s. Available: %d.", oosBook.getBookId(), oosBook.getQuantity());
+            log.error(msg);
             throw new OutOfStockException(msg);
         }
     }

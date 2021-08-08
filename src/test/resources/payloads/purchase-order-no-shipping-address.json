@@ -1,13 +1,6 @@
 {
-    "purchaseOrderId" : "",
-    "customerName": "",
-    "shippingAddress" : "",
+    "customerName": "Claudia Torres Perez",
     "details" : [
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 }
+        { "bookId" : "22d580fc-d02e-4f70-9980-f9693c18f6e0", "quantity" : 1 }
     ]
 }

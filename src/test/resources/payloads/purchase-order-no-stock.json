@@ -1,13 +1,8 @@
 {
-    "purchaseOrderId" : "",
-    "customerName": "",
-    "shippingAddress" : "",
+    "customerName": "Claudia Torres Perez",
+    "shippingAddress" : "Bilbao Street 45, Barcelona, Spain",
     "details" : [
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 }
+        { "bookId" : "ae1666d6-6100-4ef0-9037-b45dd0d5bb0e", "quantity" : 1 },
+        { "bookId" : "d02b58ae-8731-451c-9acb-1941adf88501", "quantity" : 1 }
     ]
 }

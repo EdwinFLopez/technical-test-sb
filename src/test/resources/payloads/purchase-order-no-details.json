@@ -1,6 +1,4 @@
 {
-    "purchaseOrderId" : "",
-    "customerName": "",
-    "shippingAddress" : "",
-    "details" : []
+    "customerName": "Claudia Torres Perez",
+    "shippingAddress" : "Bilbao Street 45, Barcelona, Spain"
 }

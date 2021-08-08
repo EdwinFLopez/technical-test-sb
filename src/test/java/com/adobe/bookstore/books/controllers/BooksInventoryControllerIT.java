@@ -1,5 +1,6 @@
 package com.adobe.bookstore.books.controllers;
 
+import com.adobe.bookstore.BookStore;
 import com.adobe.bookstore.books.domains.Book;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -14,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = BookStore.class)
 public class BooksInventoryControllerIT {
 
     @Autowired TestRestTemplate tpl;
 
     @Test
-    public void shouldHaveBooksWhenListed() {
+    void shouldHaveBooksWhenListed() {
         ResponseEntity<List> booksRs = tpl.getForEntity("/books-inventory", List.class);
         assertEquals(HttpStatus.OK, booksRs.getStatusCode(), "Invalid response code");
         assertNotNull(booksRs.getBody(), "No body response found");
@@ -28,7 +29,7 @@ public class BooksInventoryControllerIT {
     }
 
     @Test
-    public void shouldFindBookWhenGivenExistentBookId() {
+    void shouldFindBookWhenGivenExistentBookId() {
         var bookId = "ae1666d6-6100-4ef0-9037-b45dd0d5bb0e";
         var bookName = "adipisicing culpa Lorem laboris adipisicing";
         var availableQuantity = 0;
@@ -44,7 +45,7 @@ public class BooksInventoryControllerIT {
     }
 
     @Test
-    public void shouldReturnNoBodyWhenGivenNonExistentBookId() {
+    void shouldReturnNoBodyWhenGivenNonExistentBookId() {
         var bookRs = tpl.getForEntity("/books-inventory/invalid-book-id-000001", Book.class);
         var body = bookRs.getBody();
         assertEquals(HttpStatus.OK, bookRs.getStatusCode(), "Invalid response code");

@@ -1,13 +1,3 @@
 {
-    "purchaseOrderId" : "",
-    "customerName": "",
-    "shippingAddress" : "",
-    "details" : [
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 },
-        { "bookId" : "", "quantity" : 0 }
-    ]
+    "none" : true
 }
