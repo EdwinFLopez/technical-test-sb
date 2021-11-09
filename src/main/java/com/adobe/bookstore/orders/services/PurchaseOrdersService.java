@@ -75,12 +75,12 @@ public class PurchaseOrdersService {
             .withDelimiter('|')
             .withSystemRecordSeparator()
             .withTrim()
-            .withHeader("PURCHASE_ORDER", "CUSTOMER_NAME", "SHIPPING_ADDRESS", "BOOK_ID", "BOOK_NAME", "QUANTITY");
+            .withHeader(PurchaseOrderRecord.PURCHASE_ORDER_HEADERS);
         try (var csvPrinter = new CSVPrinter(strCsvBuffer, csvFormat)) {
             poRepository
                 .findAllPurchaseOrdersWithDetails()
                 .stream()
-                .map((PurchaseOrderRecord csvrecord) -> new Object[]{
+                .map((PurchaseOrderRecord csvrecord) -> new Object[] {
                 csvrecord.getOrderId(),
                 csvrecord.getCustomerName(),
                 csvrecord.getShippingAddress(),
